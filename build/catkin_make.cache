@@ -1,0 +1,2 @@
+graptor_pkg
+-DCATKIN_DEVEL_PREFIX=/home/mtre4800-graptor/Workspace/graptor_ws/devel -DCMAKE_INSTALL_PREFIX=/home/mtre4800-graptor/Workspace/graptor_ws/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/mtre4800-graptor/Workspace/graptor_ws/install
+
+Name: graptor_pkg
+Description: Description of graptor_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
