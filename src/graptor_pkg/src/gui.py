@@ -14,7 +14,6 @@ def callback(data):
 def listener():
 	rospy.init_node('gui_node', anonymous=True)
 	rospy.Subscriber("Pressure", String, callback)
-	rospy.spin()
 
 GPIO.setmode(GPIO.BCM)
 servo_pins = [2, 3, 4]
@@ -47,12 +46,12 @@ def set_solenoid_state(solenoid, state):
 def update_servo_angle(servo):
     angle = servo_angles[servo]
     set_servo_angle(servo_pins.index(servo), angle)
-    print(f"{servo} angle set to {angle}")
+    print("{}".format(servo), "angle set to {}".format(state))
 
 def update_solenoid_state(solenoid):
     state = solenoid_states[solenoid]
     set_solenoid_state(solenoid_labels.index(solenoid), state)
-    print(f"{solenoid} state set to {state}")
+    print("{}".format(solenoid), "state set to {}".format(stat))
 
 # Create GUI
 root = tk.Tk()
@@ -81,6 +80,7 @@ solenoid_states = {solenoid: False for solenoid in solenoid_labels}
 
 for i, solenoid in enumerate(solenoid_labels):
     tk.Button(root, text=solenoid, command=lambda s=solenoid: solenoid_states.update({s: not solenoid_states[s]})).grid(row=3, column=i+1)
+    listener()
 
 # Start main loop
 root.mainloop()
@@ -88,5 +88,3 @@ root.mainloop()
 # Clean up GPIO
 GPIO.cleanup()
 
-if __name__ == '__main__':
-	listener()
