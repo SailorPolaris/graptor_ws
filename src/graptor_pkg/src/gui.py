@@ -6,14 +6,14 @@ import time
 import Tkinter as tk
 import RPi.GPIO as GPIO
 import time
-from std_msgs.msg import String
+from std_msgs.msg import Int32
 
 def callback(data):
 	rospy.loginfo(data.data)
 
 def listener():
 	rospy.init_node('gui_node', anonymous=True)
-	rospy.Subscriber("Pressure", String, callback)
+	rospy.Subscriber("Pressure", Int32, callback)
 
 GPIO.setmode(GPIO.BCM)
 servo_pins = [2, 3, 4]
