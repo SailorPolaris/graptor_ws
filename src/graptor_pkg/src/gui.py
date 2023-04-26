@@ -18,7 +18,8 @@ def listener():
 servo_pin1 = 2
 servo_pin2 = 3
 servo_pin3 = 4
-solenoid_pins = [5, 6, 7, 8, 9, 10, 11, 12]
+solenoid_pins = [5, 6, 7, 8, 9, 10, 23, 24]
+solenoid_names = ["Pad Pressure", "Pad Vacuum", "Thumb Pressure", "Thumb Vacuum", "Index Pressure", "Index Vacuum", "Ring Pressure", "Ring Vacuum"]
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(servo_pin1, GPIO.OUT)
@@ -43,7 +44,7 @@ class App:
         self.slider1 = tk.Scale(master, from_=6.5, to=2.5, resolution=0.1, label=("-Thumb Servo"), command=self.run_servo1)
         self.slider1.pack()
 
-        self.slider2 = tk.Scale(master, from_=6.5, to=2.5, resolution=0.1, label="  -  Ring Servo", command=self.run_servo2)
+        self.slider2 = tk.Scale(master, to=2.5, from_=6.5, resolution=0.1, label="  -  Ring Servo", command=self.run_servo2)
         self.slider2.pack()
 
         self.slider3 = tk.Scale(master, from_=12.5, to=7.5, resolution=0.1, label="  -  Index Servo", command=self.run_servo3)
@@ -51,7 +52,7 @@ class App:
 
         self.buttons = []
         for i in range(8):
-            button = tk.Button(master, text="Solenoid {}".format(i+1), bg="black", command=lambda pin=solenoid_pins[i]: self.toggle_solenoid(pin))
+            button = tk.Button(master, text=solenoid_names[i], bg="black", command=lambda pin=solenoid_pins[i]: self.toggle_solenoid(pin))
             button.pack()
             self.buttons.append(button)
 
