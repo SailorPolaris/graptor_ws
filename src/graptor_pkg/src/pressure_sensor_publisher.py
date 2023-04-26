@@ -3,7 +3,7 @@
 import rospy
 import serial
 import time
-from std_msgs.msg import Int32
+from std_msgs.msg import Float64
 
 #include "ros/ros.h"
 
@@ -14,7 +14,7 @@ def talker():
 #	pressure_d = pressure_read.decode()
 #	pressure = pressure_d.rstrip()
 #
-	pub = rospy.Publisher('Pressure', Int32, queue_size = 10)
+	pub = rospy.Publisher('Pressure', Float64, queue_size = 10)
 	rospy.init_node('pressure_node', anonymous = True)
 	rate = rospy.Rate(10)
 	while not rospy.is_shutdown():
@@ -23,9 +23,9 @@ def talker():
 		pressure_read = ser.readline()
 		pressure_d = pressure_read.decode()
 		pressure = pressure_d.rstrip()
-		
-		rospy.loginfo(pressure)
-		pub.publish(pressure)
+		pres = float(pressure)
+		rospy.loginfo(pres)
+		pub.publish(pres)
 		rate.sleep()
 
 if __name__ == '__main__':
