@@ -40,13 +40,13 @@ class App:
         self.master = master
         master.title("Servo and Solenoid Control")
 
-        self.slider1 = tk.Scale(master, from_=6.5, to=2.5, resolution=0.1, label="Thumb Servo", command=self.run_servo1)
+        self.slider1 = tk.Scale(master, from_=6.5, to=2.5, resolution=0.1, label=("-Thumb Servo"), command=self.run_servo1)
         self.slider1.pack()
 
-        self.slider2 = tk.Scale(master, from_=6.5, to=2.5, resolution=0.1, label="Ring Servo", command=self.run_servo2)
+        self.slider2 = tk.Scale(master, from_=6.5, to=2.5, resolution=0.1, label="  -  Ring Servo", command=self.run_servo2)
         self.slider2.pack()
 
-        self.slider3 = tk.Scale(master, from_=12.5, to=7.5, resolution=0.1, label="Index Servo", command=self.run_servo3)
+        self.slider3 = tk.Scale(master, from_=12.5, to=7.5, resolution=0.1, label="  -  Index Servo", command=self.run_servo3)
         self.slider3.pack()
 
         self.buttons = []
